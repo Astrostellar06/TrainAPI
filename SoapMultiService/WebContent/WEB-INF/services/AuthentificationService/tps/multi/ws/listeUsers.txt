@@ -1,0 +1,22 @@
+[
+  {
+    "name": "John",
+    "password": "Azerty",
+    "mail": "john@gmail.com",
+    "isConnected": false,
+    "commandes": [
+      {
+        "id": 0,
+        "numTrain": 123,
+        "classe": "First",
+        "nbPlaces": 2
+      },
+      {
+        "id": 1,
+        "numTrain": 456,
+        "classe": "Business",
+        "nbPlaces": 2
+      }
+    ]
+  }
+]

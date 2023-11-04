@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from AuthentificationServiceService WSDL service -->
+
+  <service name="AuthentificationService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.multi.tps"/>
+      <parameter name="wsdlServiceElement" value="AuthentificationServiceService"/>
+      <parameter name="schemaQualified" value="http://ws.multi.tps"/>
+      <parameter name="wsdlServicePort" value="AuthentificationService"/>
+      <parameter name="className" value="tps.multi.ws.AuthentificationService"/>
+      <parameter name="wsdlPortType" value="AuthentificationService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.multi.tps" name="test" qname="operNS:test" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.multi.tps" xmlns:retNS="http://ws.multi.tps" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="signIn" qname="operNS:SignIn" returnQName="retNS:SignInReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://ws.multi.tps" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.multi.tps" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.multi.tps" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:mail" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.multi.tps" xmlns:retNS="http://ws.multi.tps" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="logIn" qname="operNS:LogIn" returnQName="retNS:LogInReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://ws.multi.tps" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.multi.tps" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:password" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.multi.tps" xmlns:retNS="http://ws.multi.tps" xmlns:rtns="http://ws.multi.tps" xmlns:tns="http://ws.multi.tps" name="getListUser" qname="operNS:getListUser" returnQName="retNS:getListUserReturn" returnType="rtns:ArrayOf_xsd_anyType" returnItemQName="tns:item" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.multi.tps" xmlns:retNS="http://ws.multi.tps" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="logOut" qname="operNS:LogOut" returnQName="retNS:LogOutReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://ws.multi.tps" xmlns:retNS="http://ws.multi.tps" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="saveData" qname="operNS:saveData" returnQName="retNS:saveDataReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://ws.multi.tps" xmlns:tns="http://ws.multi.tps" xmlns:itns="http://ws.multi.tps" qname="pns:userList" type="tns:ArrayOf_xsd_anyType" itemQName="itns:item"/>
+      </operation>
+      <parameter name="allowedMethods" value="getListUser test signIn saveData logIn logOut"/>
+
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;saveDataResponse" type="java:tps.multi.ws.SaveDataResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;SignIn" type="java:tps.multi.ws.SignIn" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;LogInResponse" type="java:tps.multi.ws.LogInResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;SignInResponse" type="java:tps.multi.ws.SignInResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;LogOut" type="java:tps.multi.ws.LogOut" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;testResponse" type="java:tps.multi.ws.TestResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;getListUser" type="java:tps.multi.ws.GetListUser" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;LogOutResponse" type="java:tps.multi.ws.LogOutResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <arrayMapping xmlns:ns="http://ws.multi.tps" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema" qname="ns:ArrayOf_xsd_anyType" type="java:java.lang.Object[]" innerType="cmp-ns:anyType" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;test" type="java:tps.multi.ws.Test" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;getListUserResponse" type="java:tps.multi.ws.GetListUserResponse" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;saveData" type="java:tps.multi.ws.SaveData" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://ws.multi.tps" qname="ns:&gt;LogIn" type="java:tps.multi.ws.LogIn" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

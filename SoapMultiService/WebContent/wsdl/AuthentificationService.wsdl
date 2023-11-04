@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.multi.tps" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.multi.tps" xmlns:intf="http://ws.multi.tps" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.multi.tps" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="test">
+    <complexType/>
+   </element>
+   <element name="testResponse">
+    <complexType/>
+   </element>
+   <element name="SignIn">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="mail" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="SignInResponse">
+    <complexType>
+     <sequence>
+      <element name="SignInReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="LogIn">
+    <complexType>
+     <sequence>
+      <element name="name" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="LogInResponse">
+    <complexType>
+     <sequence>
+      <element name="LogInReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getListUser">
+    <complexType/>
+   </element>
+   <element name="getListUserResponse">
+    <complexType>
+     <sequence>
+      <element name="getListUserReturn" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_anyType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:anyType"/>
+    </sequence>
+   </complexType>
+   <element name="LogOut">
+    <complexType/>
+   </element>
+   <element name="LogOutResponse">
+    <complexType>
+     <sequence>
+      <element name="LogOutReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="saveData">
+    <complexType>
+     <sequence>
+      <element name="userList" type="impl:ArrayOf_xsd_anyType"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="saveDataResponse">
+    <complexType>
+     <sequence>
+      <element name="saveDataReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="SignInRequest">
+
+      <wsdl:part element="impl:SignIn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testResponse">
+
+      <wsdl:part element="impl:testResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="LogInRequest">
+
+      <wsdl:part element="impl:LogIn" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListUserRequest">
+
+      <wsdl:part element="impl:getListUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="saveDataRequest">
+
+      <wsdl:part element="impl:saveData" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="saveDataResponse">
+
+      <wsdl:part element="impl:saveDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="SignInResponse">
+
+      <wsdl:part element="impl:SignInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getListUserResponse">
+
+      <wsdl:part element="impl:getListUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="LogOutResponse">
+
+      <wsdl:part element="impl:LogOutResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="LogInResponse">
+
+      <wsdl:part element="impl:LogInResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="LogOutRequest">
+
+      <wsdl:part element="impl:LogOut" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="testRequest">
+
+      <wsdl:part element="impl:test" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AuthentificationService">
+
+      <wsdl:operation name="test">
+
+         <wsdl:input message="impl:testRequest" name="testRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:testResponse" name="testResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SignIn">
+
+         <wsdl:input message="impl:SignInRequest" name="SignInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:SignInResponse" name="SignInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="LogIn">
+
+         <wsdl:input message="impl:LogInRequest" name="LogInRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:LogInResponse" name="LogInResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListUser">
+
+         <wsdl:input message="impl:getListUserRequest" name="getListUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getListUserResponse" name="getListUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="LogOut">
+
+         <wsdl:input message="impl:LogOutRequest" name="LogOutRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:LogOutResponse" name="LogOutResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="saveData">
+
+         <wsdl:input message="impl:saveDataRequest" name="saveDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:saveDataResponse" name="saveDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AuthentificationServiceSoapBinding" type="impl:AuthentificationService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="test">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="testRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="testResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="SignIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="SignInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="SignInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="LogIn">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="LogInRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="LogInResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getListUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getListUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getListUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="LogOut">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="LogOutRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="LogOutResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="saveData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="saveDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="saveDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AuthentificationServiceService">
+
+      <wsdl:port binding="impl:AuthentificationServiceSoapBinding" name="AuthentificationService">
+
+         <wsdlsoap:address location="http://localhost:8080/SoapMultiService/services/AuthentificationService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
