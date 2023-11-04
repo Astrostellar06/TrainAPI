@@ -1,0 +1,9 @@
+[
+  {
+    "name": "1",
+    "password": "2",
+    "mail": "3",
+    "isConnected": false,
+    "commandes": []
+  }
+]
